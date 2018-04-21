@@ -2,11 +2,15 @@
   "name": "knowledge-node-sdk",
   "version": "0.0.1",
   "description": "Knowledge SDK for NodeJS and the Browser",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
-    "lint": "standard .",
-    "security": "nsp check --reporter summary",
-    "test": "echo 'no tests'"
+    "test": "echo 'no tests'",
+    "lint": "eslint src --fix",
+    "build": "rm -rf dist && yarn test && yarn lint && babel src -d dist",
+    "start": "NODE_ENV=production yarn build && node dist/index",
+    "start:dev": "NODE_ENV=development nodemon --watch src --exec 'yarn build && node dist/index'",
+    "prepublish": "NODE_ENV=production yarn build",
+    "security": "nsp check --reporter summary"
   },
   "repository": {
     "type": "git",
@@ -31,6 +35,7 @@
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
     "flow-bin": "^0.70.0",
+    "nodemon": "^1.17.3",
     "standard": "^10.0.3"
   }
 }
