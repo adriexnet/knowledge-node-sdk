@@ -37,5 +37,8 @@
     "flow-bin": "^0.70.0",
     "nodemon": "^1.17.3",
     "standard": "^10.0.3"
+  },
+  "dependencies": {
+    "got": "^8.3.0"
   }
 }
